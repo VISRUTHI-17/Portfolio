@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Loader from "react-loaders";
 import AnimatedLetters from "../AnimatedLetters";
 import "./index.scss";
-import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../../firebase';
+import Image1 from '../../assets/images/2.png'
+import Image2 from '../../assets/images/3.png'
+
 
 const Portfolio = () => { 
     const [letterClass, setLetterClass] = useState('text-animate');
@@ -19,16 +20,23 @@ const Portfolio = () => {
         }
     });
 
-    useEffect(() => {
-        getPortfolio();
-    }, []);
+  
 
-    const getPortfolio = async () => {
-        const querySnapshot = await getDocs(collection(db, 'portfolio'));
-        setPortfolio(querySnapshot.docs.map((doc) => doc.data()));
-    }
+    const renderPortfolio = () => {
 
-    const renderPortfolio = (portfolio) => {
+        const portfolio = [
+        {
+            "image":Image1,
+            "name":"Restaurant App",
+            "description":""
+        },
+         {
+            "image":Image2,
+            "name":"Sales Man App",
+            "description":""
+        }
+    ];
+
         return (
             <div className="images-container">
                 {
